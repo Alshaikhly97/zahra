@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>إتمام الطلب — vitaS</title>
+<meta name="description" content="مراجعة السلة وإدخال عنوان التوصيل — الدفع عند الاستلام داخل العراق.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2317241F'/><text y='23' x='16' text-anchor='middle' font-size='20' font-family='monospace' fill='%23E6E2D7'>v</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">تخطّي إلى المحتوى</a>
+<header class="hdr" id="chrome-hdr"></header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs mono" aria-label="مسار التنقّل">
+      <a href="index.html">الرئيسية</a>
+      <span aria-hidden="true">←</span>
+      <span aria-current="page">إتمام الطلب</span>
+    </nav>
+  </div>
+
+  <!-- السلة فارغة -->
+  <section class="wrap" id="co-empty" hidden>
+    <div class="empty">
+      <h2>السلة فارغة</h2>
+      <p>أضف قطعة واحدة على الأقل قبل إتمام الطلب.</p>
+      <a class="btn" href="index.html#collection">تصفّح المجموعة</a>
+    </div>
+  </section>
+
+  <!-- تأكيد الطلب -->
+  <section class="wrap" id="co-done" hidden>
+    <div class="done">
+      <div class="eyebrow">تم الاستلام</div>
+      <h1>سجّلنا طلبك</h1>
+      <p class="done__num mono" id="done-num"></p>
+      <p class="done__note">
+        هذا <strong>عرض توضيحي</strong>: لم يُرسَل الطلب إلى أي جهة ولم تغادر بياناتك المتصفّح.
+        في المتجر الفعلي يصل هنا اتصال من المندوب لتأكيد الموعد.
+      </p>
+      <dl class="dl" id="done-summary"></dl>
+      <a class="btn" href="index.html">العودة إلى المتجر</a>
+    </div>
+  </section>
+
+  <!-- إتمام الطلب -->
+  <section class="wrap co" id="co" hidden>
+    <div class="co__form">
+      <div class="sec__hd">
+        <div class="eyebrow">عنوان التوصيل</div>
+        <h1>إلى أين نوصّل الطلب؟</h1>
+      </div>
+
+      <p class="alert" id="co-alert" role="alert" hidden></p>
+
+      <form id="co-fields" novalidate>
+        <div class="fld">
+          <label for="f-name">الاسم الكامل</label>
+          <input type="text" id="f-name" name="name" autocomplete="name" required
+                 aria-describedby="e-name">
+          <p class="err" id="e-name"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-phone">رقم الهاتف</label>
+          <input type="tel" id="f-phone" name="phone" autocomplete="tel" required
+                 inputmode="numeric" placeholder="07XXXXXXXXX" aria-describedby="h-phone e-phone">
+          <p class="hint" id="h-phone">أحد عشر رقماً تبدأ بـ ٠٧ — يتصل المندوب عليه قبل التسليم.</p>
+          <p class="err" id="e-phone"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-gov">المحافظة</label>
+          <select id="f-gov" name="gov" required aria-describedby="e-gov">
+            <option value="">اختر المحافظة</option>
+          </select>
+          <p class="err" id="e-gov"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-city">المدينة أو المنطقة</label>
+          <input type="text" id="f-city" name="city" autocomplete="address-level2" required
+                 aria-describedby="e-city">
+          <p class="err" id="e-city"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-landmark">أقرب نقطة دالّة</label>
+          <input type="text" id="f-landmark" name="landmark" required
+                 placeholder="مثال: مقابل صيدلية النور" aria-describedby="h-landmark e-landmark">
+          <p class="hint" id="h-landmark">المندوب يصل بالنقطة الدالّة قبل اسم الشارع — لا تتركها فارغة.</p>
+          <p class="err" id="e-landmark"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-address">تفاصيل العنوان</label>
+          <textarea id="f-address" name="address" rows="3" required
+                    autocomplete="street-address" aria-describedby="e-address"></textarea>
+          <p class="err" id="e-address"></p>
+        </div>
+
+        <div class="fld">
+          <label for="f-notes">ملاحظات للمندوب <span class="opt-tag">اختياري</span></label>
+          <textarea id="f-notes" name="notes" rows="2"></textarea>
+        </div>
+
+        <fieldset class="fld fld--set">
+          <legend>طريقة الدفع</legend>
+          <label class="radio">
+            <input type="radio" name="pay" value="cod" checked>
+            <span>الدفع عند الاستلام نقداً</span>
+          </label>
+          <p class="hint">الدفع الإلكتروني غير مفعّل في هذا العرض التوضيحي.</p>
+        </fieldset>
+      </form>
+    </div>
+
+    <aside class="co__summary" aria-labelledby="sum-title">
+      <h2 id="sum-title">ملخّص الطلب</h2>
+      <div id="ct-body"></div>
+      <dl class="dl">
+        <div><dt>مجموع القطع</dt><dd id="sum-sub"></dd></div>
+        <div><dt id="sum-ship-label">التوصيل</dt><dd id="sum-ship">يُحسب بعد اختيار المحافظة</dd></div>
+        <div class="dl__total"><dt>الإجمالي</dt><dd id="sum-total"></dd></div>
+      </dl>
+      <button class="btn" id="co-submit" type="button">تأكيد الطلب</button>
+      <p class="hint">توصيل مجاني للطلبات فوق <span id="sum-free"></span>.</p>
+    </aside>
+  </section>
+</main>
+
+<footer class="ftr" id="chrome-ftr"></footer>
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/checkout.js"></script>
+</body>
+</html>

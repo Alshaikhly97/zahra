@@ -1,0 +1,100 @@
+/* Tailwind CSS v4 — يجب أن يأتي أولاً */
+@import "tailwindcss";
+/* أنماط HeroUI v3 — بعد Tailwind */
+@import "@heroui/styles";
+
+/* ============================================================
+   هوية vitaS محمولة إلى متغيّرات HeroUI.
+   المرجع البصري كما هو: ورق الباترون وملف المواصفات الفنية —
+   لا اللون الفيروزي الطبي النموذجي.
+   ============================================================ */
+
+@theme {
+  --font-display: 'Reem Kufi', 'Noto Kufi Arabic', system-ui, sans-serif;
+  --font-sans: 'IBM Plex Sans Arabic', system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'IBM Plex Sans Arabic', ui-monospace, monospace;
+
+  --color-paper: #E6E2D7;
+  --color-paper-2: #DBD6C8;
+  --color-paper-3: #CFC9B8;
+  --color-ink: #17241F;
+  --color-ink-soft: #4A5852;
+  --color-marker: #A63527;
+  --color-marker-lift: #DE7259;
+  --color-blueprint: #275E75;
+  --color-scrub: #3F6B58;
+}
+
+:root {
+  --background: #E6E2D7;
+  --background-secondary: #DBD6C8;
+  --background-tertiary: #CFC9B8;
+  --foreground: #17241F;
+  --muted: #4A5852;
+
+  --surface: #DBD6C8;
+  --surface-foreground: #17241F;
+  --surface-secondary: #CFC9B8;
+  --surface-secondary-foreground: #17241F;
+
+  /* --accent يقود الزر الأساسي في HeroUI. في vitaS الزر الأساسي حبر داكن
+     يتحوّل إلى أحمر العلّامة عند المرور — لا العكس. */
+  --accent: #17241F;
+  --accent-foreground: #E6E2D7;
+  --accent-hover: #A63527;
+  --accent-soft: #E4DED2;
+  --accent-soft-foreground: #17241F;
+
+  /* --default-foreground هو لون نصّ الأزرار المفرغة (outline/ghost).
+     تركه فاتحاً يجعلها ورقاً على ورق — أي غير مرئية. */
+  --default: #DBD6C8;
+  --default-foreground: #17241F;
+  --default-hover: #CFC9B8;
+
+  --danger: #A63527;
+  --danger-foreground: #E6E2D7;
+
+  --border: color-mix(in srgb, #17241F 22%, transparent);
+  --border-secondary: color-mix(in srgb, #17241F 14%, transparent);
+
+  --field-background: #E6E2D7;
+  --field-foreground: #17241F;
+  --field-border: color-mix(in srgb, #17241F 32%, transparent);
+  --field-border-hover: color-mix(in srgb, #17241F 48%, transparent);
+  --field-border-focus: #17241F;
+
+  /* الزوايا الحادّة جزء من لغة ملف المواصفات الفنية */
+  --radius: 0px;
+  --field-radius: 0px;
+}
+
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  /* شبكة قياس ورق الباترون */
+  background-image:
+    linear-gradient(to left, color-mix(in srgb, #17241F 4%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, #17241F 4%, transparent) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+h1, h2, h3 { font-family: var(--font-display); font-weight: 600; line-height: 1.2; }
+
+/* الأرقام العربية تصطفّ في الجداول والمجاميع */
+.tnum { font-feature-settings: 'tnum' 1; }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .001ms !important;
+    transition-duration: .001ms !important;
+  }
+}
+
+/* النافذة المنبثقة تأتي بيضاء ناصعة من HeroUI — وهو يقطع مع ورق الصفحة.
+   نعيدها إلى لون الورق مع حدّ حادّ يوافق لغة ملف المواصفات الفنية. */
+.modal__dialog,
+.drawer__dialog {
+  background-color: var(--color-paper);
+  border: 1px solid color-mix(in srgb, #17241F 26%, transparent);
+}

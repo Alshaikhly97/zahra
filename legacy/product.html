@@ -1,0 +1,98 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>المنتج — vitaS</title>
+<meta name="description" content="صفحة المنتج الكاملة في vitaS: صور الموديل بالقَصّة النسائية والرجالية، الألوان، المقاسات، ومواصفات القماش.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Reem+Kufi:wght@400..700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/styles.css">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%2317241F'/><text y='23' x='16' text-anchor='middle' font-size='20' font-family='monospace' fill='%23E6E2D7'>v</text></svg>">
+</head>
+<body>
+
+<a class="skip" href="#main">تخطّي إلى المحتوى</a>
+<header class="hdr" id="chrome-hdr"></header>
+
+<main id="main">
+  <div class="wrap">
+    <nav class="crumbs mono" aria-label="مسار التنقّل">
+      <a href="index.html">الرئيسية</a>
+      <span aria-hidden="true">←</span>
+      <a href="index.html#collection" id="crumb-sec">المجموعة</a>
+      <span aria-hidden="true">←</span>
+      <span id="crumb-now" aria-current="page">المنتج</span>
+    </nav>
+  </div>
+
+  <!-- يظهر حين يكون ?code مفقوداً أو غير معروف -->
+  <section class="wrap" id="pdp-404" hidden>
+    <div class="empty">
+      <h2>لم نجد هذه القطعة</h2>
+      <p>الرابط لا يشير إلى منتج في الكتالوج.</p>
+      <a class="btn" href="index.html#collection">تصفّح المجموعة</a>
+    </div>
+  </section>
+
+  <section class="wrap pdp" id="pdp" hidden>
+    <div class="pdp__media">
+      <div id="pd-gallery"></div>
+    </div>
+
+    <div class="pdp__info">
+      <div class="eyebrow" id="pdp-eyebrow"></div>
+      <h1 id="pd-title">—</h1>
+      <p class="pdp__price"><span id="pdp-price"></span></p>
+      <div id="pd-info"></div>
+
+      <div class="pdp__cta">
+        <p class="mono" id="pd-msg" role="status"></p>
+        <button class="btn" id="pd-add" type="button">أضف إلى السلة</button>
+        <a class="btn btn--ghost" href="checkout.html">عرض السلة</a>
+      </div>
+
+      <dl class="dl pdp__ship">
+        <div><dt>التوصيل داخل بغداد</dt><dd id="ship-bg"></dd></div>
+        <div><dt>بقيّة المحافظات</dt><dd id="ship-other"></dd></div>
+        <div><dt>الدفع</dt><dd>عند الاستلام</dd></div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="sec" id="related-sec" hidden>
+    <div class="wrap">
+      <div class="sec__hd">
+        <div class="eyebrow">من المجموعة نفسها</div>
+        <h2>قطع تُلبس معها</h2>
+      </div>
+      <div class="grid" id="related"></div>
+    </div>
+  </section>
+</main>
+
+<footer class="ftr" id="chrome-ftr"></footer>
+
+<div class="scrim" id="scrim"></div>
+
+<aside class="drawer" id="ct" role="dialog" aria-modal="true" aria-labelledby="ct-title">
+  <div class="drawer__hd">
+    <h2 id="ct-title">السلة</h2>
+    <button class="x" type="button" data-close="#ct" aria-label="إغلاق">×</button>
+  </div>
+  <div class="drawer__body" id="ct-body"></div>
+  <div class="drawer__foot" id="ct-foot" hidden>
+    <div class="total"><span>مجموع القطع</span><b id="ct-total">0</b></div>
+    <a class="btn" id="ct-checkout" href="checkout.html">متابعة إلى إتمام الطلب</a>
+  </div>
+</aside>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script src="assets/js/catalog.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/shop.js"></script>
+<script src="assets/js/product.js"></script>
+</body>
+</html>
